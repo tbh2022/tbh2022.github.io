@@ -1,33 +1,62 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<script>
-   var params = window.location.search;
-   params = params.replace('?', '');
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta property="og:site_name" content="Prodigy Padel Academy">
+      <meta property="og:title" content="Prodigy Padel Academy" />
+      <meta property="og:description" content="Tu entrenador de Padel" />
+      <meta property="og:image" itemprop="image" content="data:image/png;base64,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">
+      <meta property="og:type" content="website" />
+      <meta property="og:updated_time" content="1440432930" />
+      <script>
+         const isMobile = {
+              Android: function() {
+                  return navigator.userAgent.match(/Android/i);
+              },
+              BlackBerry: function() {
+                  return navigator.userAgent.match(/BlackBerry/i);
+              },
+              iOS: function() {
+                  return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+              },
+              Opera: function() {
+                  return navigator.userAgent.match(/Opera Mini/i);
+              },
+              Windows: function() {
+                  return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+              },
+              any: function() {
+                  return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+              }
+         };
 
-   window.onload = function() {
-    document.getElementById('output').innerHTML = "PATH: " + params;
+         var params = window.location.search;
+         params = params.replace('?', '');
 
-    var a = document.getElementById('deepL');
-    a.href = "ppa://share.app/" + params;
+         window.onload = function() {
+            document.getElementById('output').innerHTML = "PATH: " + params;
 
-   };
+            document.getElementById('deepL').href = "ppa://share.app/" + params;
 
-   window.location.replace("ppa://share.app/" + params);
+            var platform = "isAndroid: " + isMobile.Android() + " isIOS: " + isMobile.iOS() + " any: " + isMobile.any();
+            document.getElementById('platform').innerHTML = platform;
+         };
 
-   setTimeout(function () {
-     window.location.replace("https://play.google.com/store/apps/details?id=com.prodigypadelacademy.app&hl=es");
-   }, 5000);
-</script>
-</head>
-<body>
-<p style="font-size:40px;">
- <a id="deepL" href="">Deep link (android)/ Custom URL scheme (iOS)</a>
- <br>
- <a id="appL" href="https://www.prodigypadelacademy.com/app">App links (android) / Universal link (iOS)</a>
- <br><br><br>
- <p id="output"></p>
-</p>
-</body>
+//         window.location.replace("ppa://share.app/" + params);
+
+//         setTimeout(function () {
+//           window.location.replace("https://play.google.com/store/apps/details?id=com.prodigypadelacademy.app&hl=es");
+//         }, 5000);
+      </script>
+  </head>
+  <body>
+      <p style="font-size:40px;">
+         <a id="deepL" href="">Deep link (android)/ Custom URL scheme (iOS)</a>
+         <br>
+         <a id="appL" href="https://www.prodigypadelacademy.com/app">App links (android) / Universal link (iOS)</a>
+         <br><br><br>
+         <p id="output"></p>
+         <p id="platform"></p>
+      </p>
+  </body>
 </html>
