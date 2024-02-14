@@ -34,10 +34,26 @@
          params = params.replace('?', '');
 
          window.onload = function() {
+            <!-- get query params -->
             document.getElementById('output').innerHTML = "PATH: " + params;
+
+            <!-- set deep link -->
             document.getElementById('deepL').href = "ppa://share.app/" + params;
+
+            <!-- get platform -->
             var platform = "isAndroid: " + isMobile.Android() + " ----- isIOS: " + isMobile.iOS();
             document.getElementById('platform').innerHTML = platform;
+
+            <!-- get ios version -->
+            var checkVersion = function () {
+                var agent = window.navigator.userAgent,
+                start = agent.indexOf( ‘OS ‘ );
+                if( ( agent.indexOf( ‘iPhone’ ) > -1 || agent.indexOf( ‘iPad’ ) > -1 ) && start > -1 ){
+                    return window.Number( agent.substr( start + 3, 3 ).replace( ‘_’, ’.’ ) );
+                }
+                return 0;
+            }
+            document.getElementById('iosversion').innerHTML = checkVersion;
          };
 
          var storeURL = "";
@@ -49,11 +65,11 @@
              storeURL = "https://www.prodigypadelacademy.com/";
          }
 
-         window.location.replace("ppa://share.app/" + params);
+         //window.location.replace("ppa://share.app/" + params);
 
-         setTimeout(function () {
-              window.location.replace(storeURL);
-         }, 5000);
+         // setTimeout(function () {
+         //      window.location.replace(storeURL);
+         // }, 5000);
       </script>
   </head>
   <body>
@@ -64,6 +80,7 @@
          <br><br><br>
          <p id="output"></p>
          <p id="platform"></p>
+         <p id="iosversion"></p>
       </p>
   </body>
 </html>
