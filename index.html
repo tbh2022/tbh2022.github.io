@@ -31,14 +31,14 @@
          };
 
          var params = window.location.search;
-         params = params.replace('?', '');
+         params = params.replace("?", "");
 
          window.onload = function() {
             <!-- get query params -->
-            document.getElementById('output').innerHTML = "PATH: " + params;
+            document.getElementById("output").innerHTML = "PATH: " + params;
 
             <!-- set deep link -->
-            document.getElementById('deepL').href = "ppa://share.app/" + params;
+            document.getElementById("deepL").href = "ppa://share.app/" + params;
 
             <!-- get platform -->
             var platform = "isAndroid: " + isMobile.Android() + " ----- isIOS: " + isMobile.iOS();
@@ -47,13 +47,13 @@
             <!-- get ios version -->
             var checkVersion = function () {
                 var agent = window.navigator.userAgent;
-                var start = agent.indexOf( ‘OS ‘ );
-                if( ( agent.indexOf( ‘iPhone’ ) > -1 || agent.indexOf( ‘iPad’ ) > -1 ) && start > -1 ){
-                    return window.Number( agent.substr( start + 3, 3 ).replace( ‘_’, ’.’ ) );
+                var start = agent.indexOf("OS");
+                if((agent.indexOf("iPhone") > -1 || agent.indexOf("iPad") > -1 ) && start > -1 ){
+                    return window.Number(agent.substr(start + 3, 3).replace("_", "."));
                 }
                 return 0;
             }
-            document.getElementById('iosversion').innerHTML = checkVersion;
+            document.getElementById("iosversion").innerHTML = checkVersion;
          };
 
          var storeURL = "";
