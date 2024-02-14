@@ -68,7 +68,7 @@
             //window.location.replace("ppa://share.app/" + params);
 
             // redirect to the store if supported
-            if (iosversion > 12) {
+            if (isMobile.Android() || (iosversion > 12)) {
                 setTimeout(function () {
                     window.location.replace(storeURL);
                 }, 5000);
