@@ -9,67 +9,71 @@
       <meta property="og:type" content="website" />
       <meta property="og:updated_time" content="1440432930" />
       <script>
-         const isMobile = {
-              Android: function() {
-                  return navigator.userAgent.match(/Android/i);
-              },
-              BlackBerry: function() {
-                  return navigator.userAgent.match(/BlackBerry/i);
-              },
-              iOS: function() {
-                  return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-              },
-              Opera: function() {
-                  return navigator.userAgent.match(/Opera Mini/i);
-              },
-              Windows: function() {
-                  return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
-              },
-              any: function() {
-                  return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-              }
-         };
-
-         var params = window.location.search;
-         params = params.replace("?", "");
-
          window.onload = function() {
-            <!-- get query params -->
+            const isMobile = {
+                Android: function() {
+                    return navigator.userAgent.match(/Android/i);
+                },
+                BlackBerry: function() {
+                    return navigator.userAgent.match(/BlackBerry/i);
+                },
+                iOS: function() {
+                    return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+                },
+                Opera: function() {
+                    return navigator.userAgent.match(/Opera Mini/i);
+                },
+                Windows: function() {
+                    return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+                },
+                any: function() {
+                    return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+                }
+            };
+
+            // get query params
+            var params = window.location.search;
+            params = params.replace("?", "");
             document.getElementById("output").innerHTML = "PATH: " + params;
 
-            <!-- set deep link -->
+            // set deep link
             document.getElementById("deepL").href = "ppa://share.app/" + params;
 
-            <!-- get platform -->
+            // get platform
             var platform = "isAndroid: " + isMobile.Android() + " ----- isIOS: " + isMobile.iOS();
             document.getElementById('platform').innerHTML = platform;
 
-            <!-- get ios version -->
+            // get ios version
             var checkVersion = function () {
                 var agent = window.navigator.userAgent;
                 var start = agent.indexOf("OS");
-                if((agent.indexOf("iPhone") > -1 || agent.indexOf("iPad") > -1 ) && start > -1 ){
+                if((agent.indexOf("iPhone") > -1 || agent.indexOf("iPad") > -1 ) && start > -1 ) {
                     return window.Number(agent.substr(start + 3, 3).replace("_", "."));
                 }
                 return 0;
             }
-            document.getElementById("iosversion").innerHTML = checkVersion();
+            var iosversion = checkVersion();
+            document.getElementById("iosversion").innerHTML = iosversion;
+
+            // get apps store URL
+            var storeURL = "";
+            if(isMobile.Android()) {
+                storeURL = "https://play.google.com/store/apps/details?id=com.prodigypadelacademy.app&hl=es";
+            } else if(isMobile.iOS()) {
+                storeURL = "https://apps.apple.com/es/app/prodigy-padel-academy/id6463727496?l=es_ES";
+            } else {
+                storeURL = "https://www.prodigypadelacademy.com/";
+            }
+
+            //window.location.replace("ppa://share.app/" + params);
+
+            // redirect to the store if supported
+            if (iosversion > 12) {
+                setTimeout(function () {
+                    window.location.replace(storeURL);
+                }, 5000);
+            }
          };
-
-         var storeURL = "";
-         if(isMobile.Android()) {
-             storeURL = "https://play.google.com/store/apps/details?id=com.prodigypadelacademy.app&hl=es";
-         } else if(isMobile.iOS()) {
-             storeURL = "https://apps.apple.com/es/app/prodigy-padel-academy/id6463727496?l=es_ES";
-         } else {
-             storeURL = "https://www.prodigypadelacademy.com/";
-         }
-
-         //window.location.replace("ppa://share.app/" + params);
-
-         // setTimeout(function () {
-         //      window.location.replace(storeURL);
-         // }, 5000);
       </script>
   </head>
   <body>
