@@ -53,6 +53,8 @@
             document.addEventListener("visibilitychange", () => {
                 isPageVisible = false;
                 document.getElementById("didLeave").innerHTML = "app launched.";
+                window.open('', '_self', '');
+                window.close();
 
                 if (document.visibilityState === 'visible') {
                     location.reload();
