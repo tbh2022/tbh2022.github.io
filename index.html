@@ -46,13 +46,17 @@
 
             // handle visiblitychange event
             var isPageVisible = true;
-            document.onvisibilitychange = function() {
-                isPageVisible = false;
-                document.getElementById("didLeave").innerHTML = "app launched.";
-            };
+            // document.onvisibilitychange = function() {
+            //     isPageVisible = false;
+            //     document.getElementById("didLeave").innerHTML = "app launched.";
+            // };
             document.addEventListener("visibilitychange", () => {
                 isPageVisible = false;
                 document.getElementById("didLeave").innerHTML = "app launched.";
+
+                if (document.visibilityState === 'visible') {
+                    location.reload();
+                }
             });
 
             // get query params
