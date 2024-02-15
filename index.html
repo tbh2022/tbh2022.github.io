@@ -44,6 +44,17 @@
                 }
             };
 
+            // handle visiblitychange event
+            var isPageVisible = true;
+            document.onvisibilitychange = function() {
+                isPageVisible = false;
+                document.getElementById("didLeave").innerHTML = "app launched.";
+            };
+            document.addEventListener("visibilitychange", () => {
+                isPageVisible = false;
+                document.getElementById("didLeave").innerHTML = "app launched.";
+            });
+
             // get query params
             var params = window.location.search;
             params = params.replace("?", "");
@@ -79,15 +90,7 @@
             }
 
             // only for link opened in phone devices
-            var isPageVisible = true;
             if (isMobile.Android() || isMobile.iOS()) {
-                // handle visiblitychange event
-                document.onvisibilitychange = function() {
-                  if (document.visibilityState === 'hidden') {
-                      isPageVisible = false;
-                  }
-                };
-
                 // launch app
                 window.location.replace("ppa://share.app/" + params);
 
@@ -116,6 +119,7 @@
           <meta itemprop="height" content="60">
       </span>
 
+      <p id="didLeave"></p>
       <!--
       <p style="font-size:40px;">
          <a id="deepL" href="">Deep link (android)/ Custom URL scheme (iOS)</a>
