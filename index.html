@@ -34,14 +34,14 @@
             // get query params
             var params = window.location.search;
             params = params.replace("?", "");
-            document.getElementById("output").innerHTML = "PATH: " + params;
+            //document.getElementById("output").innerHTML = "PATH: " + params;
 
             // set deep link
-            document.getElementById("deepL").href = "ppa://share.app/" + params;
+            //document.getElementById("deepL").href = "ppa://share.app/" + params;
 
             // get platform
-            var platform = "isAndroid: " + isMobile.Android() + " ----- isIOS: " + isMobile.iOS();
-            document.getElementById('platform').innerHTML = platform;
+            //var platform = "isAndroid: " + isMobile.Android() + " ----- isIOS: " + isMobile.iOS();
+            //document.getElementById('platform').innerHTML = platform;
 
             // get ios version
             var checkVersion = function () {
@@ -77,6 +77,7 @@
       </script>
   </head>
   <body>
+      <!--
       <p style="font-size:40px;">
          <a id="deepL" href="">Deep link (android)/ Custom URL scheme (iOS)</a>
          <br>
@@ -86,5 +87,6 @@
          <p id="platform"></p>
          <p id="iosversion"></p>
       </p>
+    -->
   </body>
 </html>
