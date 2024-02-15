@@ -2,11 +2,12 @@
 <html>
   <head>
       <title>Prodigy Padel Academy</title>
-      <link rel="shortcut icon" href="https://tbh2022.github.io/logo.ico">
-      <link rel="icon" sizes="60x60" href="https://tbh2022.github.io/logo.ico">
+      <link rel="icon" type="image/x-icon" href="https://tbh2022.github.io/favicon.ico">
+      <link rel="icon shortcut" href="https://tbh2022.github.io/favicon.ico">
+      <link rel="icon" sizes="60x60" href="https://tbh2022.github.io/favicon.ico">
       <link rel="icon" sizes="60x60" type="image/png" href="https://tbh2022.github.io/logo.jpg">
-      <link rel="apple-touch-icon" href="https://tbh2022.github.io/logo.ico">
-      <link rel="image_src" href="https://tbh2022.github.io/logo.ico">
+      <link rel="apple-touch-icon" href="https://tbh2022.github.io/favicon.ico">
+      <link rel="image_src" href="https://tbh2022.github.io/favicon.ico">
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://www.prodigypadelacademy.com">
       <meta property="og:site_name" content="Prodigy Padel Academy">
@@ -77,13 +78,17 @@
                 storeURL = "https://www.prodigypadelacademy.com/";
             }
 
-            window.location.replace("ppa://share.app/" + params);
+            // only for link opened in phone devices
+            if (isMobile.Android() || isMobile.iOS()) {
+                // launch app
+                window.location.replace("ppa://share.app/" + params);
 
-            // redirect to the store if supported
-            if (isMobile.Android() || (iosversion > 12)) {
-                setTimeout(function () {
-                    window.location.replace(storeURL);
-                }, 5000);
+                // redirect to the store if supported
+                if (isMobile.Android() || (iosversion > 12)) {
+                    setTimeout(function () {
+                        window.location.replace(storeURL);
+                    }, 5000);
+                }
             }
          };
       </script>
